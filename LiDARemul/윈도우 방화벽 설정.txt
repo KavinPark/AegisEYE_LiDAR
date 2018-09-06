@@ -1,0 +1,3 @@
+Socket Program을 Window에서 실행하려면,방화벽 설정을 해야 한다.
+https://www.tomshardware.com/news/how-to-open-firewall-ports-in-windows-10,36451.html
+항목중 python에 허용을 설정한다.
