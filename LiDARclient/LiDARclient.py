@@ -1,12 +1,13 @@
 import socket
 
  
-HOST = '192.168.0.26' #'localhost'
+HOST = '192.168.0.19' #'localhost'
 PORT = 23   #9009
  
 def getFileFromServer():
  
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+        sock.setsockopt(socket.SOL_SOCKET, 25, str("eth0" + '\0').encode('utf-8'))
         sock.connect((HOST,PORT))
         nNumOfChunk = 0
         

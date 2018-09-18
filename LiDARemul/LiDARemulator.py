@@ -2,7 +2,7 @@ import socketserver
 from os.path import exists
 from time import sleep
 
-HOST = ''    #'192.168.0.26'
+HOST = '192.168.0.19'
 PORT = 23   #9009
  
 class MyTcpHandler(socketserver.BaseRequestHandler):
@@ -41,6 +41,9 @@ def runServer():
     try:
         server = socketserver.TCPServer((HOST, PORT),MyTcpHandler)
         server.serve_forever()
+#           server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#           server.bind
+    
     except KeyboardInterrupt:
         print('++++++File Server Terminated.++++++')
  

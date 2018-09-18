@@ -1,13 +1,14 @@
 import socket
 
  
-HOST = '192.168.0.26' #'localhost'
+HOST = '192.168.0.19' #'localhost'
 PORT = 23   #9009
  
 def getFileFromServer(filename):
     data_transferred = 0
  
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+        sock.setsockopt(socket.SOL_SOCKET, 25, str("eth0" + '\0').encode('utf-8'))
         sock.connect((HOST,PORT))
         sock.sendall(filename.encode())
  
@@ -16,7 +17,7 @@ def getFileFromServer(filename):
             print('File[%s]: There\'s No File on Server or Transmission Error' %filename)
             return
  
-        with open('./download/' + filename, 'wb') as f:
+        with open(filename, 'wb') as f:
             try:
                 while  data:
                     f.write(data)
@@ -27,5 +28,5 @@ def getFileFromServer(filename):
  
     print('File[%s] Transfer Done. Size [%d]' %(filename, data_transferred))
  
-filename = input('Enter Filename of Saved:')
+filename = '1.bin'  #input('Enter Filename of Saved:')
 getFileFromServer(filename)
