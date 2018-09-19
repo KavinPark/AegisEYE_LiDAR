@@ -24,10 +24,6 @@ class MyTcpHandler(socketserver.BaseRequestHandler):
                     print('%d' %nNumOfChunk)                   
                     sleep(1/100)   # 30Fps
                     
-#                    if not ( (nNumOfChunk % 30) ):
-#                        print('%d' %nNumOfChunk)
-                    
-#                    continue
                 except KeyboardInterrupt:
                     break
  
@@ -41,8 +37,6 @@ def runServer():
     try:
         server = socketserver.TCPServer((HOST, PORT),MyTcpHandler)
         server.serve_forever()
-#           server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-#           server.bind
     
     except KeyboardInterrupt:
         print('++++++File Server Terminated.++++++')
